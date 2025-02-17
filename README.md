@@ -13,7 +13,7 @@ Baixar os arquivos do GitHub.
 git clone <repositorio_url> .
 ```
 ```
-git clone ??? .
+git clone https://github.com/celkecursos/tutorial-aula-crud-react19-typescript.git .
 ```
 
 Instalar todas as dependências indicadas pelo package.json.
