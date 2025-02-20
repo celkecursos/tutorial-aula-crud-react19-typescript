@@ -8,6 +8,9 @@ import { useEffect, useState } from "react";
 // Importa a instância do axios configurada para fazer requisições para a API
 import instance from "@/services/api";
 
+// Importar o componente para criar link
+import Link from "next/link";
+
 // Definir tipos para a resposta da API
 interface User {
     id: number,
@@ -50,6 +53,8 @@ export default function Users() {
         <div>
 
             <h1>Listar Usuários</h1>
+
+            <Link href={'/users/create'}>Cadastrar</Link>
 
             {/* Exibe mensagem de erro */}
             {error && <p style={{ color: "#f00" }}>{error}</p>}
