@@ -60,6 +60,12 @@ Inicializar um novo repositorio GIT.
 git init
 ```
 
+Alterar o usuário globalmente "--global" (para todos os repositórios) ou alterar o usuário apenas para um repositório "--local".
+```
+git config --global user.name "SeuNomeDeUsuario"
+git config --global user.email "seuemail@exemplo.com"
+```
+
 Adicionar todos os arquivos modificados na área de preparação.
 ```
 git add .
@@ -89,3 +95,11 @@ Enviar os commits locais para um repositório remoto.
 ```
 git push -u origin main
 ```
+
+## Autor
+
+Este projeto foi desenvolvido por [Cesar Szpak](https://github.com/cesarszpak) e está hospedado no repositório da organização [Celke](https://github.com/celkecursos).
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE.txt) para mais detalhes.
