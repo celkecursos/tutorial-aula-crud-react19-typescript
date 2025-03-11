@@ -3,7 +3,10 @@
 'use client'
 
 // Importa hooks do React para usar o estado 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+// useParams - Acessar os parâmetros da URL de uma página que usa rotas dinâmicas.
+import { useParams } from "next/navigation";
 
 // Importa a instância do axios configurada para fazer requisições para a API
 import instance from "@/services/api";
@@ -14,7 +17,10 @@ import Link from "next/link";
 // importar o componente com o Menu
 import Menu from "@/components/Menu";
 
-export default function CreateUser() {
+export default function EditUser() {
+
+    // Usar o useParams para acessar o parâmetro 'id' da URL
+    const { id } = useParams();
 
     // Estado para o campo name
     const [name, setName] = useState<string>("");
@@ -27,6 +33,24 @@ export default function CreateUser() {
 
     // Estado para controle de sucesso
     const [success, setSuccess] = useState<string | null>(null);
+
+    const fetchUserDetail = async () => {
+        try {
+
+            // Fazer a requisição à API
+            const response = await instance.get(`/users/${id}`);
+            // console.log(response.data.user);
+
+            // Preencher os campos com os dados existentes
+            setName(response.data.user.name);
+            setEmail(response.data.user.email);
+
+        } catch (error: any) {
+
+            // Criar a mensagem genérica de erro
+            setError(error.response?.data?.message || "Erro ao carregar o usuário");
+        }
+    }
 
     // Função para enviar os dados para a API
     const handleSubmit = async (event: React.FormEvent) => {
@@ -43,7 +67,7 @@ export default function CreateUser() {
         try {
 
             // Fazer a requisição à API e enviar os dados
-            const response = await instance.post("/users", {
+            const response = await instance.put(`/users/${id}`, {
                 name,
                 email,
             });
@@ -51,10 +75,6 @@ export default function CreateUser() {
 
             // Exibir mensagem de sucesso
             setSuccess(response.data.message);
-
-            // Limpa o campo do formulário
-            setName("");
-            setEmail("");
 
         } catch (error: any) {
             // console.log(error.response.data);
@@ -64,6 +84,16 @@ export default function CreateUser() {
         }
     }
 
+    // Hook para buscar os dados quando o id estiver disponível
+    useEffect(() => {
+        if (id) {
+
+            // Busca os dados da situação se o id estiver disponível
+            fetchUserDetail();
+
+        }
+    }, [id]); // Recarrega os dados quando o id mudar
+
     return (
         <div className="flex flex-col h-screen bg-gray-100">
             {/* Menu Superior */}
@@ -72,8 +102,11 @@ export default function CreateUser() {
             {/* Conteúdo Principal */}
             <div className="flex-1 px-2 py-6 max-w-6xl mx-auto w-full">
                 <div className="flex justify-between items-center mb-6">
-                    <h1 className="text-2xl font-bold">Cadastrar Usuário</h1>
-                    <Link href={'/users/list'} className="bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600">Listar</Link>
+                    <h1 className="text-2xl font-bold">Editar Usuário</h1>
+                    <span>
+                        <Link href={'/users/list'} className="bg-cyan-500 text-white px-4 py-2 me-1 rounded-md hover:bg-cyan-600">Listar</Link>
+                        <Link href={`/users/${id}`} className="bg-blue-500 text-white px-4 py-2 me-1 rounded-md hover:bg-blue-600">Visualizar</Link>
+                    </span>
                 </div>
 
                 {/* Exibe mensagem de erro */}
@@ -105,7 +138,7 @@ export default function CreateUser() {
                             className="border p-2 w-full mt-1 rounded-md border-blue-100 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:outline-none"
                         />
                     </div>
-                    <button type="submit" className="p-2 bg-green-500 text-white rounded-md hover:bg-green-600">Cadastrar</button>
+                    <button type="submit" className="p-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">Salvar</button>
 
                 </form>
 

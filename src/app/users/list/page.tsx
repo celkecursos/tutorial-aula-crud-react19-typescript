@@ -86,8 +86,9 @@ export default function Users() {
                                     <td className="border p-3">{user.name}</td>
                                     <td className="border p-3">{user.email}</td>
                                     <td className="border p-3">
-                                        <Link href={`/users/${user.id}`} className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Visualizar</Link>
-                                        Editar Apagar
+                                        <Link href={`/users/${user.id}`} className="bg-blue-500 text-white px-4 py-2 me-1 rounded-md hover:bg-blue-600">Visualizar</Link>
+                                        <Link href={`/users/${user.id}/edit`} className="bg-yellow-500 text-white px-4 py-2 me-1 rounded-md hover:bg-yellow-600">Editar</Link>
+                                         Apagar
                                     </td>
                                 </tr>
                             ))}
