@@ -16,6 +16,8 @@ git clone <repositorio_url> .
 git clone https://github.com/celkecursos/tutorial-aula-crud-react19-typescript.git .
 ```
 
+Alterar o endereço da API no arquivo src/services/api.tsx.
+
 Instalar todas as dependências indicadas pelo package.json.
 ```
 npm install
