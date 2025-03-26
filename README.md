@@ -55,6 +55,11 @@ Pacote para conectar a aplicação à API.
 npm install axios
 ```
 
+Instalar o SweetAlert2 para apresentar o alerta de confirmação.
+```
+npm install sweetalert2
+```
+
 ## Como enviar o projeto para o GitHub.
 
 Inicializar um novo repositorio GIT.
