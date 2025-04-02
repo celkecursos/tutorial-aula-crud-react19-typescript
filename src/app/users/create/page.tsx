@@ -11,8 +11,11 @@ import instance from "@/services/api";
 // Importar o componente para criar link
 import Link from "next/link";
 
-// importar o componente com o Menu
+// Importar o componente com o Menu
 import Menu from "@/components/Menu";
+
+// Importar o componente com o alerta
+import AlertMessage from "@/components/AlertMessage";
 
 export default function CreateUser() {
 
@@ -76,11 +79,11 @@ export default function CreateUser() {
                     <Link href={'/users/list'} className="bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600">Listar</Link>
                 </div>
 
-                {/* Exibe mensagem de erro */}
-                {error && <p className="text-red-500 mt-4">{error}</p>}
+                {/* Exibe o alerta de erro */}
+                <AlertMessage type="error" message={error} />
 
-                {/* Exibe mensagem de sucesso */}
-                {success && <p className="text-green-500 mt-4">{success}</p>}
+                {/* Exibe o alerta de sucesso */}
+                <AlertMessage type="success" message={success} />
 
                 <form onSubmit={handleSubmit} className="mt-6 bg-white shadow-md rounded-lg p-6">
                     <div className="mb-4">

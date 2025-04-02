@@ -17,6 +17,9 @@ import Menu from "@/components/Menu";
 // Importa o componente para apagar registro
 import DeleteButton from "@/components/DeleteButton";
 
+// Importar o componente com o alerta
+import AlertMessage from "@/components/AlertMessage";
+
 // Definir tipos para a resposta da API
 interface User {
     id: number,
@@ -65,7 +68,7 @@ export default function Users() {
 
         // Verificar se existe a mensagem
         if (message) {
-            
+
             // Atribuir a mensagem
             setSuccess(message);
 
@@ -90,10 +93,11 @@ export default function Users() {
                     <Link href={'/users/create'} className="bg-green-500 text-white px-2 py-1 rounded-md hover:bg-green-600">Cadastrar</Link>
                 </div>
 
-                {/* Exibe mensagem de erro */}
-                {error && <p className="text-red-500 mt-4">{error}</p>}
-                {/* Exibe mensagem de sucesso */}
-                {success && <p className="text-green-500 mt-4">{success}</p>}
+                {/* Exibe o alerta de erro */}
+                <AlertMessage type="error" message={error} />
+
+                {/* Exibe o alerta de sucesso */}
+                <AlertMessage type="success" message={success} />
 
                 {/* Tabela */}
                 <div className="mt-6 bg-white shadow-md rounded-lg p-6">

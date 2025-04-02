@@ -21,6 +21,9 @@ import Menu from "@/components/Menu";
 // Importa o componente para apagar registro
 import DeleteButton from "@/components/DeleteButton";
 
+// Importar o componente com o alerta
+import AlertMessage from "@/components/AlertMessage";
+
 // Definir tipos para a resposta da API
 interface User {
     id: number,
@@ -63,7 +66,7 @@ export default function UserDetails() {
             setError(error.response?.data?.message || "Erro ao carregar o usuário");
         }
     }
-    
+
     // Redirecionar para a página listar após apagar o registro
     const handleSucess = () => {
 
@@ -72,7 +75,7 @@ export default function UserDetails() {
 
         // Redireciona para a página de listar
         router.push("/users/list");
-        
+
     }
 
     // Hook para buscar os dados quando o id estiver disponível
@@ -111,8 +114,8 @@ export default function UserDetails() {
                     </span>
                 </div>
 
-                {/* Exibe mensagem de erro */}
-                {error && <p className="text-red-500 mt-4">{error}</p>}
+                {/* Exibe o alerta de erro */}
+                <AlertMessage type="error" message={error} />
 
                 {user && !error && (
                     <div className="bg-white shadow-md rounded-lg p-6">

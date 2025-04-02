@@ -17,6 +17,9 @@ import Link from "next/link";
 // importar o componente com o Menu
 import Menu from "@/components/Menu";
 
+// Importar o componente com o alerta
+import AlertMessage from "@/components/AlertMessage";
+
 export default function EditUser() {
 
     // Usar o useParams para acessar o parâmetro 'id' da URL
@@ -109,11 +112,11 @@ export default function EditUser() {
                     </span>
                 </div>
 
-                {/* Exibe mensagem de erro */}
-                {error && <p className="text-red-500 mt-4">{error}</p>}
+                {/* Exibe o alerta de erro */}
+                <AlertMessage type="error" message={error} />
 
-                {/* Exibe mensagem de sucesso */}
-                {success && <p className="text-green-500 mt-4">{success}</p>}
+                {/* Exibe o alerta de sucesso */}
+                <AlertMessage type="success" message={success} />
 
                 <form onSubmit={handleSubmit} className="mt-6 bg-white shadow-md rounded-lg p-6">
                     <div className="mb-4">
