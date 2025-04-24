@@ -60,6 +60,11 @@ Instalar o SweetAlert2 para apresentar o alerta de confirmação.
 npm install sweetalert2
 ```
 
+Instalar a biblioteca para gerar PDF.
+```
+npm install jspdf
+```
+
 ## Como enviar o projeto para o GitHub.
 
 Inicializar um novo repositorio GIT.
