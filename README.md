@@ -65,6 +65,11 @@ Instalar a biblioteca para gerar PDF.
 npm install jspdf
 ```
 
+Instalar a biblioteca para gerar gráficos.
+```
+npm install recharts
+```
+
 ## Como enviar o projeto para o GitHub.
 
 Inicializar um novo repositorio GIT.
