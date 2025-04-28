@@ -5,23 +5,15 @@
 // Importar os componentes do grafico em barra
 import { Bar, BarChart, CartesianAxis, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-// Dados de exemplo: quantidade de usuários inscritos nos últimos 12 meses
-const data = [
-    { month: "Jan", users: 120 },
-    { month: "Fev", users: 90 },
-    { month: "Mar", users: 150 },
-    { month: "Abr", users: 80 },
-    { month: "Mai", users: 110 },
-    { month: "Jun", users: 140 },
-    { month: "Jul", users: 130 },
-    { month: "Ago", users: 160 },
-    { month: "Set", users: 170 },
-    { month: "Out", users: 200 },
-    { month: "Nov", users: 220 },
-    { month: "Dez", users: 250 },
-];
+// Definir o tipo dos dados esperados
+interface UserBarChartProps {
+    data: { 
+        month: string,
+        users: number,
+    }[];
+}
 
-const UsersBarChart = () => {
+const UsersBarChart = ({ data }: UserBarChartProps) => {
     return (
         <div className="w-full h-96">
             <h2 className="text-base font-semibold text-gray-700 text-center">Usuários Inscritos Mensalmente</h2>
@@ -35,7 +27,7 @@ const UsersBarChart = () => {
                 }}>
                     <CartesianAxis strokeDasharray="0" />
                     <XAxis dataKey="month"/>
-                    <YAxis />
+                    <YAxis allowDecimals={false} />
                     <Tooltip />
                     <Bar dataKey="users" fill="#3182CE" barSize={50} />
                 </BarChart>
